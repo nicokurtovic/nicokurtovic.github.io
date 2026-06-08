@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SIMIO - Nicolas Kurtovic</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="google-site-verification" content="A6fCeSCpNlKdQ0DDIIZnKjODEDViKMowkcWayy-tpV0" />
+		<meta name="description" content="SIMIO: Connecting simulations to ALMA observations. A package by Nicolas Kurtovic for generating synthetic ALMA observations from radiative transfer images." />
+		<meta name="keywords" content="SIMIO, ALMA, CASA, synthetic observations, protoplanetary disks, radiative transfer, RADMC3D, astronomy, Nicolas Kurtovic" />
+		<meta name="author" content="Nicolas Kurtovic" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.simio-logo {
+				max-width: 10rem;
+				margin: 0 0 1.5rem 2rem;
+			}
+			.simio-hero {
+				margin-bottom: 1.5rem;
+			}
+			.simio-image {
+				border-radius: 0.35em;
+				box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.12);
+			}
+			.caption {
+				font-size: 0.9em;
+				line-height: 1.6;
+				color: #888;
+				margin-top: 0.75rem;
+			}
+			.link-cards {
+				margin-top: 1.5rem;
+			}
+			.link-card {
+				border: solid 1px #efefef;
+				border-radius: 0.35em;
+				padding: 1.25rem;
+				height: 100%;
+			}
+			.link-card h3 {
+				margin-bottom: 0.4rem;
+			}
+			@media screen and (max-width: 736px) {
+				.simio-logo {
+					display: block;
+					float: none !important;
+					margin: 0 auto 1.5rem auto;
+					max-width: 8rem;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a href="/index.html" class="image avatar"><img src="images/profile_pic_grey_ntk.png" alt="" /></a>
+				<h2><strong>Nicolas Kurtovic</strong></h2>
+				<h1>Astronomer, Postdoctoral Researcher.</h1>
+
+				<nav id="nav">
+					<ul>
+						<p><a href="/index.html">Home</a><br />
+						<a href="/ntk_CV.pdf">CV</a><br />
+						<a href="/projects.html">My Publications</a><br />
+						<a href="/collaborations.html">Collaborations</a><br />
+						<a href="/simio.html">SIMIO</a></p>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- SIMIO -->
+			<section id="simio">
+				<header class="major">
+					<h2>SIMIO</h2>
+				</header>
+
+				<span class="image right simio-logo">
+					<img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCBm6ZgcNA9V-uzW_hG_zL02rVM9z0YIBiUa-fR4as3KVECSR9hWVBLoOp5nxKpH5dw2HVcpXOcQDLGHkNGFmj8PE5wqzkhDRCLyALxffLvGc7_THKpK0vLeZ90YTXg4cx27zwIZkGuamT0CKBKIOaMfYLVOPgzg6z2fk3ZtSl02W-EYDy1sNV_H7DL4118Db_sN22t1h4g9EsT4pJTQyPu5VMHtcWaknX91Q1dAMM%3Dw1280" alt="SIMIO logo" />
+				</span>
+
+				<h3>SIMIO: Connecting SIMulatIons to Observations</h3>
+				<p class="simio-hero">The SIMIO package contains a suite of functions and wrappers for CASA 5.6.2, designed to take your radiative transfer image, for example from <a href="https://www.ita.uni-heidelberg.de/~dullemond/software/radmc-3d/" target="_blank" rel="noopener">RADMC-3D</a>, and return how your system would have looked if ALMA had observed it. The package aims to answer the question: <em>How would my system look if an existing observation had targeted it?</em></p>
+
+				<ul class="actions">
+					<li><a href="https://simio-continuum.readthedocs.io/" class="button primary" target="_blank" rel="noopener">Documentation</a></li>
+					<li><a href="https://github.com/nicokurtovic/SIMIO" class="button" target="_blank" rel="noopener">GitHub</a></li>
+				</ul>
+			</section>
+
+			<section id="what-it-does">
+				<h2>The package</h2>
+
+				<h3>Difference with simobserve and simanalyze</h3>
+				<p>The CASA tasks generate synthetic observations based on antenna configuration inputs, total exposure time, observation time, selected bandwidth, and other information needed to create the synthetic visibilities.</p>
+				<p>SIMIO, on the other hand, takes existing ALMA observations and replaces their data with your synthetic image. Therefore, you automatically have the same uv-coverage, frequency coverage, bandwidth, exposure time, and all the properties of the actual observation. This is useful when you need to test whether existing observations could have detected the features of your simulations.</p>
+				<p>With SIMIO, you do not need to worry about the observational details since the default parameters already mimic the chosen observation. All the imaging parameters and routines are set to state-of-the-art knowledge. Just input your simulation and get all the products.</p>
+
+				<h3>Compare directly to any ALMA observation</h3>
+				<p>SIMIO has several templates that you can use for your synthetic observation, and you can also add templates by yourself. Each template contains an actual observation of a protoplanetary disk and information about the source. By default, SIMIO will take your observation and simulate it as if it had the same geometry and distance as the template. Both the geometry and the distance to the source can be modified.</p>
+				<p>You can also disable the source geometry and input your radiative transfer image with the desired geometry.</p>
+
+				<h3>Better than Gaussian convolution, and as easy to run</h3>
+				<p>Gaussian convolution is just one of the steps of generating an image with CLEAN. SIMIO will give you the data products you could need:</p>
+				<ul>
+					<li>Measurement Set, or ms file.</li>
+					<li>Images in FITS format: beam-convolved image, PSF, model, and residuals.</li>
+					<li>Additional data figures comparing your source to the template.</li>
+				</ul>
+			</section>
+
+			<section id="examples">
+				<h2>Example</h2>
+				<p>This is how the Solar System from <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...659A...6B/abstract" target="_blank" rel="noopener">Bergez-Casalou et al. (2022)</a> would look if it was at the same distance and geometry as HD 163296, TW Hya, MY Lup, or LkHa 330.</p>
+
+				<span class="image fit">
+					<img class="simio-image" src="https://lh3.googleusercontent.com/sitesv/AA5AbUDdeKWZtU5izjG7C4mYDvmSp0lmswaSl_I9RT6kXMeFSaD2Akt9wXacenMv2LLqWzs5pPkUkR3WgPeHYQ_0MVLwu3W5hidH5euo5OaUaN4fWNjZtn2bKmMNZdEK7Bj1Zv-5HJEtGSroIry4ib4sa-6b8vIgQk7ZL-cgygu0qajlN6ctbY6uI0UAuWDJfs-Gz8LyeSnBWDb8zkeeZkEW86eaL1rjW_jLTt9xl97j%3Dw1280" alt="Synthetic ALMA observation of the Solar System compared with PDS 70" />
+				</span>
+				<p class="caption">The Solar System from <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...659A...6B/abstract" target="_blank" rel="noopener">Bergez-Casalou et al. (2022)</a> if it was at the same distance and geometry of PDS 70, using the observations of <a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...916L...2B/abstract" target="_blank" rel="noopener">Benisty et al. (2021)</a>. The dots show the locations of PDS 70 b, PDS 70 c, and the disk center.</p>
+			</section>
+
+			<section id="resources">
+				<h2>Resources</h2>
+				<div class="row link-cards">
+					<article class="col-6 col-12-xsmall">
+						<div class="link-card">
+							<h3>Documentation</h3>
+							<p>Read the installation notes, tutorials, API descriptions, and examples.</p>
+							<ul class="actions">
+								<li><a href="https://simio-continuum.readthedocs.io/" class="button small" target="_blank" rel="noopener">Read the docs</a></li>
+							</ul>
+						</div>
+					</article>
+					<article class="col-6 col-12-xsmall">
+						<div class="link-card">
+							<h3>Code</h3>
+							<p>Download SIMIO, check the source code, or report issues through GitHub.</p>
+							<ul class="actions">
+								<li><a href="https://github.com/nicokurtovic/SIMIO" class="button small" target="_blank" rel="noopener">GitHub repository</a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section id="acknowledgements">
+				<h2>Acknowledgements</h2>
+				<p>This work was possible thanks to the support of my Ph.D. advisor, <a href="https://paola-pinilla.com/" target="_blank" rel="noopener">Paola Pinilla</a>. The original routines to extract and replace visibilities in measurement sets were written by <a href="https://das.uchile.cl/integrantes/laura-perez/" target="_blank" rel="noopener">Laura Pérez</a> and later modified to fit into SIMIO. The JvM correction routine is original from the <a href="https://almascience.eso.org/alma-data/lp/MAPS" target="_blank" rel="noopener">MAPS</a> collaboration. I also thank the ALMA helpdesk staff, especially Jackie Bertone, who helped fix the measurement set of TW Hya to create its template.</p>
+				<p>I acknowledge the support provided by the Alexander von Humboldt Foundation in the framework of the Sofja Kovalevskaja Award endowed by the Federal Ministry of Education and Research.</p>
+
+				<h3>Are you having issues creating a template?</h3>
+				<p>Send me a message. Some measurement sets can be a bit challenging, but we will sort it out.</p>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://github.com/nicokurtovic" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Nicolas Kurtovic</li><li>Webpage design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
