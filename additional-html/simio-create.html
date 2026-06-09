@@ -1,0 +1,499 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SIMIO Create a Template - Nicolas Kurtovic</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="google-site-verification" content="A6fCeSCpNlKdQ0DDIIZnKjODEDViKMowkcWayy-tpV0" />
+		<meta name="description" content="Create a SIMIO template from an ALMA measurement set." />
+		<meta name="keywords" content="SIMIO, ALMA, CASA, templates, synthetic observations, protoplanetary disks, measurement sets, Nicolas Kurtovic" />
+		<meta name="author" content="Nicolas Kurtovic" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+
+		<style>
+			.simio-submenu {
+				display: block;
+				margin-top: 0.35rem;
+				margin-left: 1.0rem;
+				font-size: 0.85em;
+				line-height: 1.7;
+			}
+			.simio-submenu a {
+				color: rgba(255, 255, 255, 0.65);
+				border-bottom: none;
+			}
+			.simio-submenu a:hover,
+			.simio-submenu a.active {
+				color: #49bf9d;
+			}
+			.tutorial-step {
+				margin-bottom: 2.75rem;
+			}
+			.tutorial-step h2 {
+				margin-bottom: 1.0rem;
+			}
+			.tutorial-step h3 {
+				margin-top: 1.5rem;
+			}
+			.simio-frame {
+				display: inline-block !important;
+				width: auto !important;
+				max-width: 100% !important;
+				background: transparent !important;
+				margin: 1.5rem 0 0.5rem 0;
+			}
+			.simio-frame:before {
+				display: none !important;
+			}
+			.simio-frame img {
+				display: block;
+				width: auto !important;
+				max-width: 100% !important;
+				height: auto !important;
+				background: white;
+				border-radius: 0 !important;
+			}
+			.simio-image {
+				box-shadow: none !important;
+				border-radius: 0 !important;
+				background: white;
+			}
+			pre {
+				background: #f7f7f7;
+				border: solid 1px #efefef;
+				border-radius: 0.35em;
+				font-size: 0.85em;
+				line-height: 1.55;
+				margin: 1.25rem 0;
+				overflow-x: auto;
+				padding: 1.0rem 1.25rem;
+			}
+			pre code {
+				font-family: "Courier New", monospace;
+				white-space: pre;
+			}
+			code {
+				font-family: "Courier New", monospace;
+			}
+			.note {
+				font-size: 0.95em;
+				color: #888;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a href="/index.html" class="image avatar"><img src="/images/profile_pic_grey_ntk.png" alt="" /></a>
+				<h2><strong>Nicolas Kurtovic</strong></h2>
+				<h1>Astronomer, Postdoctoral Researcher.</h1>
+
+				<nav id="nav">
+					<ul>
+						<p><a href="/index.html">Home</a><br />
+						<a href="/ntk_CV.pdf">CV</a><br />
+						<a href="/projects.html">My Publications</a><br />
+						<a href="/collaborations.html">Collaborations</a><br />
+						<a href="/simio.html">SIMIO</a><br />
+
+						<span class="simio-submenu">
+							<a href="/additional-html/simio-quicktutorial.html">Quick tutorial</a><br />
+							<a href="/additional-html/simio-template-info.html">Templates</a><br />
+							<a href="/additional-html/simio-create.html" class="active">Create a template</a>
+						</span></p>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<section id="create-template" class="tutorial-step">
+				<h2>Create a template</h2>
+				<p>This page describes how to create a new SIMIO template from an existing ALMA measurement set. The example uses Elias 24, one of the bright DSHARP planet-forming disks.</p>
+			</section>
+
+			<section id="step-1" class="tutorial-step">
+				<h2>Step 1: Get the measurement set of the observation you want to mimic</h2>
+				<p>For this tutorial, we will create a template based on Elias 24, one of the bright DSHARP planet-forming disks (<a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...869L..42H/abstract" target="_blank" rel="noopener">Huang et al. 2018</a>). The original measurement set can be obtained from the <a href="https://almascience.eso.org/almadata/lp/DSHARP/" target="_blank" rel="noopener">DSHARP data release</a>.</p>
+				<p>Download the continuum of Elias 24. This file contains the information from the observation, including antennas, visibilities, times, spectral windows, and weights.</p>
+				<span class="image simio-frame">
+					<img class="simio-image" src="/images/simio-images/create_template_step1.png" alt="DSHARP download page for the Elias 24 continuum measurement set" />
+				</span>
+			</section>
+
+			<section id="step-2" class="tutorial-step">
+				<h2>Step 2: Create a folder for your template</h2>
+				<p>Go to your SIMIO directory and open the <code>templates/</code> folder. Create an empty folder with the name of your template. In this example, the template will be called <code>Elias24</code>.</p>
+				<span class="image simio-frame">
+					<img class="simio-image" src="/images/simio-images/create_template_step2.png" alt="Template folders inside the SIMIO templates directory" />
+				</span>
+			</section>
+
+			<section id="step-3" class="tutorial-step">
+				<h2>Step 3: Create subfolders and scripts</h2>
+				<p>Inside the new template folder, create three empty folders named <code>images</code>, <code>msfiles</code>, and <code>uvtables</code>. Also create two empty scripts called <code>template_casa_handling.py</code> and <code>template_info.py</code>.</p>
+				<p>In this example, the template is Elias 24, so the scripts are called <code>Elias24_casa_handling.py</code> and <code>Elias24_info.py</code>.</p>
+				<p>Move the measurement set downloaded in Step 1 into the <code>msfiles/</code> folder and extract the measurement set from the <code>.tgz</code> file.</p>
+				<span class="image simio-frame">
+					<img class="simio-image" src="/images/simio-images/create_template_step3.png" alt="Elias24 template folder with images, msfiles, uvtables, and scripts" />
+				</span>
+			</section>
+
+			<section id="step-4" class="tutorial-step">
+				<h2>Step 4: Template information</h2>
+				<p>The file <code>template_info.py</code>, in this case <code>Elias24_info.py</code>, contains the information needed to generate the images for this template. You can also copy the info file from another template and replace the numbers with those of your new source.</p>
+
+<pre><code># Source Geometry, Elias 2-24 in Huang et al. (2018), DSHARP II
+
+dRa = 0. # arcsec
+
+dDec = 0. # arcsec
+
+inc = 29. # degrees
+
+pa = 45.7 # degrees
+
+geom_params = [dRa, dDec, inc, pa]
+
+# Distance
+
+parallax = 7.180888047224439 # GAIA EDR3 mas
+
+dist = 1000. / parallax # pc
+
+# Sky info
+
+temp_center_ra = '16h26m24.0782s' # J2000
+
+temp_center_dec = '-24d16m13.884s' # J2000
+
+temp_semimaj = 1.15 # arcsec
+
+# Clean info
+
+temp_robust = 0.0 # From Andrews et al. (2021)
+
+temp_cellsize = '0.003arcsec' # DSHARP standard
+
+temp_imsize = 2000 # Big enough for noise estimation</code></pre>
+
+				<p><strong>Source geometry:</strong> The spatial offset, inclination, and position angle are given in degrees and arcseconds. For Elias 24 we set <code>dRa</code> and <code>dDec</code> to zero because the phase center will be corrected later.</p>
+				<p><strong>Distance:</strong> The distance is estimated from the Gaia EDR3 parallax. The SIMBAD name of the source is Elias 2-24.</p>
+				<p><strong>Sky information:</strong> The coordinates should correspond to the source center in J2000. Here, the coordinate is chosen from the peak-brightness pixel. The parameter <code>temp_semimaj</code> is the radial extent of the source in arcseconds and is used to create the CLEAN mask.</p>
+				<p><strong>Clean information:</strong> These parameters are used to generate the template images. The robust parameter controls the weighting of the baselines. The cell size should be around seven to ten times smaller than the beam size, and the image size should be large enough to estimate the noise level with an annulus around the source.</p>
+			</section>
+
+			<section id="step-5" class="tutorial-step">
+				<h2>Step 5: Prepare the measurement set in CASA</h2>
+				<p>Open CASA from the template folder, for example from <code>/home/path_to_simio/simio/templates/Elias24/</code>. From this location, call the CASA analysis utilities and the SIMIO scripts needed to extract uv tables and generate images.</p>
+
+<pre><code># Append the au functions from other directory.
+
+sys.path.append('../../codes/analysis_scripts/')
+
+import analysisUtils as au
+
+# Import uv-handling functions
+
+execfile('../../codes/simio_ms2ascii.py')
+
+# Import imaging functions
+
+execfile('../../codes/simio_clean.py')
+
+# Info
+
+prefix = 'Elias24'
+
+ms_cont = 'msfiles/'+prefix+'_avg.ms'
+
+listobs('msfiles/Elias24_continuum.ms')</code></pre>
+
+				<h3>Step 5.1: Open CASA and inspect the original measurement set</h3>
+				<p>Set the name of the template as <code>prefix</code>, create the name for the averaged template measurement set, and execute <code>listobs</code> on the downloaded measurement set.</p>
+
+				<h3>Step 5.2: Check the measurement set</h3>
+				<p>The <code>listobs</code> output shows the spectral windows in the measurement set. For Elias 24, the visibilities are stored in 16 spectral windows. We will average each spectral window to one channel, and average in time to reduce the size of the template.</p>
+				<span class="image simio-frame">
+					<img class="simio-image" src="/images/simio-images/create_template_step4.png" alt="CASA listobs output for the Elias 24 measurement set" />
+				</span>
+
+				<h3>Step 5.3: Split and average</h3>
+				<p>Remove previous auxiliary files, split the original measurement set into three auxiliary measurement sets, and average the spectral windows according to their original number of channels.</p>
+
+<pre><code># Remove previous auxiliary files
+
+os.system('rm -rf msfiles/Elias24_avg.ms')
+
+os.system('rm -rf msfiles/Elias24_avg_aux1.ms')
+
+os.system('rm -rf msfiles/Elias24_avg_aux2.ms')
+
+os.system('rm -rf msfiles/Elias24_avg_aux3.ms')
+
+# Split the data to average and combine
+
+split(vis='msfiles/Elias24_continuum.ms', \
+      outputvis='msfiles/Elias24_avg_aux1.ms', \
+      timebin='30s', \
+      spw='0,1,3,4,5,6', \
+      width=8, \
+      datacolumn='data', \
+      intent='OBSERVE_TARGET#ON_SOURCE')
+
+split(vis='msfiles/Elias24_continuum.ms', \
+      outputvis='msfiles/Elias24_avg_aux2.ms', \
+      timebin='30s', \
+      spw='11,15', \
+      datacolumn='data', \
+      intent='OBSERVE_TARGET#ON_SOURCE')
+
+split(vis='msfiles/Elias24_continuum.ms', \
+      outputvis='msfiles/Elias24_avg_aux3.ms', \
+      timebin='30s', \
+      spw='2,7,8,9,10,12,13,14', \
+      width=16, \
+      datacolumn='data', \
+      intent='OBSERVE_TARGET#ON_SOURCE')</code></pre>
+
+				<p>This step can also be done with <code>mstransform</code>.</p>
+
+				<h3>Step 5.4: Concatenate</h3>
+				<p>Concatenate the auxiliary measurement sets into one averaged measurement set. To save disk space, remove the intermediate files afterwards.</p>
+
+<pre><code># Join together
+
+concat(vis=['msfiles/Elias24_avg_aux1.ms', \
+            'msfiles/Elias24_avg_aux2.ms', \
+            'msfiles/Elias24_avg_aux3.ms'], \
+       concatvis='msfiles/Elias24_avg.ms', \
+       dirtol='0.1arcsec', copypointing=False)
+
+# Remove auxiliary files
+
+os.system('rm -rf msfiles/Elias24_avg_aux1.ms')
+
+os.system('rm -rf msfiles/Elias24_avg_aux2.ms')
+
+os.system('rm -rf msfiles/Elias24_avg_aux3.ms')
+
+# Check averaged Elias24
+
+listobs('msfiles/Elias24_avg.ms')</code></pre>
+
+				<p>After checking the new file with <code>listobs</code>, each spectral window should have only one channel.</p>
+
+				<h3>Step 5.5: Shift the phase center</h3>
+				<p>The phase center of this observation is not exactly at the center of the disk. We move the phase center of the visibilities to match the location of the peak emission of the disk. This step is optional for other templates.</p>
+
+<pre><code># Move phase center
+
+fixvis(vis=ms_cont, \
+       outputvis=ms_cont, \
+       phasecenter='J2000 16h26m24.0782s -24d16m13.884s')</code></pre>
+
+				<h3>Step 5.6: Create a mask for your template</h3>
+				<p>Using the same information from the template info script, create a source mask and a residual mask. These masks use CASA region syntax.</p>
+
+<pre><code># Mask geometry
+
+inc, pa = 29., 45.7 # Huang et al. (2018), DSHARP II
+
+pa_mask = str(pa)
+
+# Mask semimajor axis size
+
+mask_semimaj = 1.15
+
+semimajor = str(mask_semimaj)+'arcsec'
+
+semiminor = str(mask_semimaj*np.cos(np.deg2rad(inc)))+'arcsec'
+
+# Mask center
+
+center_ra = '16h26m24.0782s'
+
+center_dec = '-24d16m13.884s'
+
+center = center_ra + ' ' + center_dec
+
+# Create masks
+
+mask_LB = 'ellipse[[%s, %s], [%s, %s], %sdeg]' % \
+          (center_ra, center_dec, semimajor, semiminor, pa_mask)
+
+res_mask_LB = 'annulus[[%s, %s], [%s, %s]]' % \
+              (center_ra, center_dec, '2.5arcsec', '3.5arcsec')</code></pre>
+			</section>
+
+			<section id="step-6" class="tutorial-step">
+				<h2>Step 6: Image your template</h2>
+				<h3>Step 6.1: Run CLEAN</h3>
+				<p>Use <code>tclean_wrapper</code> to image the averaged measurement set. You can set the CLEAN parameters, but the cell size, image size, and robust value should match the values in the template information script.</p>
+				<p>The <code>smallscalebias</code> parameter makes CLEAN prefer larger scales before point-source components. The values <code>gain=0.05</code> and <code>cyclefactor=1.75</code> make the iterations more conservative. In this example, we clean down to four times the noise level so the JvM correction can be applied afterwards.</p>
+
+<pre><code># Clean
+
+tclean_wrapper(vis='msfiles/'+prefix+'_avg.ms', \
+               imagename='images/'+prefix+'_im', \
+               imsize=2000, \
+               cellsize='0.003arcsec', \
+               mask=mask_LB, \
+               scales=[0, 3, 8, 13], \
+               robust=0.0, \
+               gain=0.05, \
+               smallscalebias=0.32, \
+               cyclefactor=1.75, \
+               threshold=str(4*2.05e-02)+'mJy', \
+               savemodel='modelcolumn', \
+               niter=10000, \
+               interactive=True)</code></pre>
+
+				<h3>Step 6.2: CLEAN interactively</h3>
+				<p>The interactive CLEAN viewer should look like this, with the mask already set. Press the green arrow iteratively, or press the blue arrow and wait until the cleaning is finished. This step can take a long time.</p>
+				<span class="image simio-frame">
+					<img class="simio-image" src="/images/simio-images/create_template_step6.2.png" alt="CASA interactive CLEAN viewer for the Elias 24 template" />
+				</span>
+
+				<h3>Step 6.3: Estimate SNR and apply the JvM correction</h3>
+				<p>After generating the images, execute the <code>estimate_SNR</code> function and apply the JvM correction to the newly created images. This gives the angular resolution and noise information for the template images.</p>
+				<p>Check the JvM-corrected image with the CASA viewer. In this example, the brightness scale has been adjusted.</p>
+				<span class="image simio-frame">
+					<img class="simio-image" src="/images/simio-images/create_template_step6.3.png" alt="CASA viewer image of the JvM-corrected Elias 24 template" />
+				</span>
+
+				<h3>Step 6.4: Export your images to FITS files</h3>
+				<p>Use <code>exportfits</code> to export the newly created images. This example saves the JvM-corrected image, the non-JvM-corrected image, the CLEAN model, the residuals, and the PSF.</p>
+
+<pre><code>exportfits(imagename='images/'+prefix+'_im.image', \
+           fitsimage='images/'+prefix+'_im_noJvM.fits', \
+           history=False, overwrite=True)
+
+exportfits(imagename='images/'+prefix+'_im.JvMcorr.image', \
+           fitsimage='images/'+prefix+'_im.fits', \
+           history=False, overwrite=True)
+
+exportfits(imagename='images/'+prefix+'_im.model', \
+           fitsimage='images/'+prefix+'_im_model.fits', \
+           history=False, overwrite=True)
+
+exportfits(imagename='images/'+prefix+'_im.residual', \
+           fitsimage='images/'+prefix+'_im_residual.fits', \
+           history=False, overwrite=True)
+
+exportfits(imagename='images/'+prefix+'_im.psf', \
+           fitsimage='images/'+prefix+'_im_psf.fits', \
+           history=False, overwrite=True)</code></pre>
+			</section>
+
+			<section id="step-7" class="tutorial-step">
+				<h2>Step 7: Write the uv tables in txt format</h2>
+				<p>Execute the following code to extract the uv table from the measurement set. The only line you should need to change is the name of the template. The uv table size will be printed after concatenation.</p>
+
+<pre><code># Initialize weight_spectrum column
+
+initweights(vis=ms_cont, wtmode='weight', dowtsp=True)
+
+# Extract spw info
+
+os.system('rm -rf uvtables/'+prefix+'_spws*')
+
+ms.open(ms_cont)
+
+spw_info = ms.getspectralwindowinfo()
+
+np.save('uvtables/'+prefix+'_spws', spw_info.keys())
+
+ms.close()
+
+os.system('rm -rf msfiles/'+prefix+'_cont_spw*')
+
+os.system('rm -rf uvtables/'+prefix+'_cont_spw*')
+
+for i in spw_info.keys():
+
+    # Names
+
+    ms_file = 'msfiles/' + prefix + '_cont_spw'+str(i)+'.ms'
+
+    ascii_file = 'uvtables/' + prefix + '_cont_spw'+str(i)+'.txt'
+
+    # Delete any previous spw file
+
+    os.system('rm -rf ' + ms_file)
+
+    os.system('rm -rf ' + ascii_file)
+
+    # Split
+
+    split(vis=ms_cont, outputvis=ms_file, \
+          keepflags=False, datacolumn='data', spw=i)
+
+    ms_to_ascii(ms_file, ascii_file, with_flags=True)
+
+    # Delete temporal msfile
+
+    os.system('rm -rf ' + ms_file)
+
+# Combine uvtable from each spw into a single file
+
+os.system('rm -rf uvtables/'+prefix+'_uvtable.txt')
+
+os.system('ls -1tr uvtables/'+prefix+'_cont_spw*.txt | xargs cat &gt;&gt; uvtables/'+prefix+'_uvtable.txt')
+
+# Check weight
+
+os.system('du -h uvtables/'+prefix+'_uvtable.txt')
+
+# Delete previous uvtables
+
+for i in spw_info.keys():
+
+    ascii_file = 'uvtables/' + prefix + '_cont_spw'+str(i)+'.txt'
+
+    os.system('rm -rf ' + ascii_file)</code></pre>
+
+				<p class="note">Example output:</p>
+
+<pre><code># 93M uvtables/Elias24_uvtable.txt</code></pre>
+			</section>
+
+			<section id="step-8" class="tutorial-step">
+				<h2>Step 8: That's it</h2>
+				<p>Your template is ready to be used as a SIMIO template. The template images are stored in the <code>images/</code> folder, the averaged measurement set is in <code>msfiles/</code>, and the visibilities are in the <code>uvtables/</code> folder in txt format.</p>
+				<p>You can now delete the <code>.log</code> and <code>.last</code> files created by CASA.</p>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://github.com/nicokurtovic" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Nicolas Kurtovic</li><li>Webpage design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/jquery.poptrox.min.js"></script>
+		<script src="/assets/js/browser.min.js"></script>
+		<script src="/assets/js/breakpoints.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<script src="/assets/js/main.js"></script>
+
+	</body>
+</html>
