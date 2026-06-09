@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SIMIO Template Information - Nicolas Kurtovic</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="google-site-verification" content="A6fCeSCpNlKdQ0DDIIZnKjODEDViKMowkcWayy-tpV0" />
+		<meta name="description" content="Template information for SIMIO: available ALMA continuum templates and their observational properties." />
+		<meta name="keywords" content="SIMIO, ALMA, CASA, templates, synthetic observations, protoplanetary disks, continuum, Nicolas Kurtovic" />
+		<meta name="author" content="Nicolas Kurtovic" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+
+		<style>
+			.simio-submenu {
+				display: block;
+				margin-top: 0.35rem;
+				margin-left: 1.0rem;
+				font-size: 0.85em;
+				line-height: 1.7;
+			}
+			.simio-submenu a {
+				color: rgba(255, 255, 255, 0.65);
+				border-bottom: none;
+			}
+			.simio-submenu a:hover,
+			.simio-submenu a.active {
+				color: #49bf9d;
+			}
+			.tutorial-step {
+				margin-bottom: 2.75rem;
+			}
+			.tutorial-step h2 {
+				margin-bottom: 1.0rem;
+			}
+			.simio-frame {
+				display: inline-block !important;
+				width: auto !important;
+				max-width: 100% !important;
+				background: transparent !important;
+				margin: 1.5rem 0 0.5rem 0;
+			}
+			.simio-frame:before {
+				display: none !important;
+			}
+			.simio-frame img {
+				display: block;
+				width: auto !important;
+				max-width: 100% !important;
+				height: auto !important;
+				background: white;
+				border-radius: 0 !important;
+			}
+			.simio-image {
+				box-shadow: none !important;
+				border-radius: 0 !important;
+				background: white;
+			}
+			.template-grid {
+				display: flex;
+				flex-direction: column;
+				gap: 1.75rem;
+				margin-top: 1.5rem;
+			}
+			.template-card {
+				border-top: solid 1px #efefef;
+				padding-top: 1.5rem;
+			}
+			.template-card:first-child {
+				border-top: 0;
+				padding-top: 0;
+			}
+			.template-card-header {
+				display: flex;
+				gap: 1.4rem;
+				align-items: flex-start;
+			}
+			.template-image {
+				flex: 0 0 auto;
+				margin: 0.2rem 0 0.5rem 0;
+			}
+			.template-image img {
+				max-width: 8.5rem !important;
+			}
+			.template-info {
+				flex: 1 1 auto;
+				min-width: 0;
+			}
+			.template-info h3 {
+				margin-bottom: 0.35rem;
+			}
+			.template-meta {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				column-gap: 1.5rem;
+				row-gap: 0.25rem;
+				margin: 0.75rem 0 0.75rem 0;
+			}
+			.template-meta div {
+				line-height: 1.55;
+			}
+			.template-programs {
+				margin: 0.6rem 0 0 0;
+			}
+			.template-programs li {
+				margin: 0.1rem 0;
+			}
+			.template-note {
+				font-size: 0.95em;
+				color: #888;
+				margin-top: 0.5rem;
+			}
+			pre {
+				background: #f7f7f7;
+				border: solid 1px #efefef;
+				border-radius: 0.35em;
+				font-size: 0.85em;
+				line-height: 1.55;
+				margin: 1.25rem 0;
+				overflow-x: auto;
+				padding: 1.0rem 1.25rem;
+			}
+			pre code {
+				font-family: "Courier New", monospace;
+				white-space: pre;
+			}
+			code {
+				font-family: "Courier New", monospace;
+			}
+			@media screen and (max-width: 736px) {
+				.template-card-header {
+					display: block;
+				}
+				.template-image img {
+					max-width: 7.0rem !important;
+				}
+				.template-meta {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a href="/index.html" class="image avatar"><img src="/images/profile_pic_grey_ntk.png" alt="" /></a>
+				<h2><strong>Nicolas Kurtovic</strong></h2>
+				<h1>Astronomer, Postdoctoral Researcher.</h1>
+
+				<nav id="nav">
+					<ul>
+						<p><a href="/index.html">Home</a><br />
+						<a href="/ntk_CV.pdf">CV</a><br />
+						<a href="/projects.html">My Publications</a><br />
+						<a href="/collaborations.html">Collaborations</a><br />
+						<a href="/simio.html">SIMIO</a><br />
+
+						<span class="simio-submenu">
+							<a href="/additional-html/simio-quicktutorial.html">Quick tutorial</a><br />
+							<a href="/additional-html/simio-template-info.html" class="active">Templates</a><br />
+							<a href="/simio-create.html">Create a template</a>
+						</span></p>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<section id="available-templates" class="tutorial-step">
+				<h2>Available templates</h2>
+				<p>Current available templates are dust continuum observations of each system. Check the <a href="/additional-html/simio-quicktutorial.html">Quick tutorial</a> to see how to use them. Alternatively, check the <a href="/simio-create.html">Create a template</a> tutorial to add a new observation.</p>
+				<p>Click on the template name to download the template folder compressed in <code>tar.gz</code> format, and click on the reference to go to the ADS link of each publication.</p>
+			</section>
+
+			<section id="band-6" class="tutorial-step">
+				<h2>Band 6</h2>
+				<p><strong>230 GHz, 1.3 mm</strong></p>
+
+				<div class="template-grid">
+					<article class="template-card" id="twhya">
+						<div class="template-card-header">
+							<span class="image simio-frame template-image">
+								<img class="simio-image" src="/images/simio-images/simio-im.png" alt="Temporary SIMIO logo for TW Hya" />
+							</span>
+							<div class="template-info">
+								<h3><a href="https://keeper.mpdl.mpg.de/f/fec69e9b22e24bca82d5/" target="_blank" rel="noopener">TWHya</a> <span class="template-note">(226.3 MB)</span></h3>
+								<p>Reference: <a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...852..122H/abstract" target="_blank" rel="noopener">Huang et al. 2018a</a></p>
+								<div class="template-meta">
+									<div><strong>Distance:</strong> 60 pc</div>
+									<div><strong>Inclination:</strong> 5.8 deg</div>
+									<div><strong>PA:</strong> 151.6 deg</div>
+									<div><strong>Angular resolution:</strong> 44 x 28 mas, robust -0.2</div>
+									<div><strong>RA:</strong> 11h01m51.818s</div>
+									<div><strong>Dec:</strong> -34d42m17.235s</div>
+									<div><strong>Pixel size:</strong> 3 mas</div>
+									<div><strong>Image size:</strong> 2000 px</div>
+								</div>
+								<p><strong>ALMA programs:</strong></p>
+								<ul class="template-programs">
+									<li>2013.1.00114.S</li>
+									<li>2013.1.00387.S</li>
+									<li>2015.A.00005.S</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+
+					<article class="template-card" id="hd163296">
+						<div class="template-card-header">
+							<span class="image simio-frame template-image">
+								<img class="simio-image" src="/images/simio-images/simio-im.png" alt="Temporary SIMIO logo for HD 163296" />
+							</span>
+							<div class="template-info">
+								<h3><a href="https://keeper.mpdl.mpg.de/f/08571b06d0ac41978edc/" target="_blank" rel="noopener">HD163296</a> <span class="template-note">(210.6 MB)</span></h3>
+								<p>Reference: <a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...869L..49I/abstract" target="_blank" rel="noopener">Isella et al. 2018</a></p>
+								<div class="template-meta">
+									<div><strong>Distance:</strong> 101 pc</div>
+									<div><strong>Inclination:</strong> 46 deg</div>
+									<div><strong>PA:</strong> 133 deg</div>
+									<div><strong>Angular resolution:</strong> 50 x 39 mas, robust -0.5</div>
+									<div><strong>RA:</strong> 17h56m21.279s</div>
+									<div><strong>Dec:</strong> -21d57m22.559s</div>
+									<div><strong>Pixel size:</strong> 5 mas</div>
+									<div><strong>Image size:</strong> 2000 px</div>
+								</div>
+								<p><strong>ALMA programs:</strong></p>
+								<ul class="template-programs">
+									<li>2013.1.00366.S</li>
+									<li>2013.1.00601.S</li>
+									<li>2016.1.00484.L</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+
+					<article class="template-card" id="mylup">
+						<div class="template-card-header">
+							<span class="image simio-frame template-image">
+								<img class="simio-image" src="/images/simio-images/simio-im.png" alt="Temporary SIMIO logo for MY Lup" />
+							</span>
+							<div class="template-info">
+								<h3><a href="https://keeper.mpdl.mpg.de/f/0b9ed14671e344859dba/" target="_blank" rel="noopener">MYLup</a> <span class="template-note">(319.1 MB)</span></h3>
+								<p>Reference: <a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...869L..42H/abstract" target="_blank" rel="noopener">Huang et al. 2018b</a></p>
+								<div class="template-meta">
+									<div><strong>Distance:</strong> 157 pc</div>
+									<div><strong>Inclination:</strong> 73.2 deg</div>
+									<div><strong>PA:</strong> 58.8 deg</div>
+									<div><strong>Angular resolution:</strong> 41 x 25 mas, robust 0.0</div>
+									<div><strong>RA:</strong> 16h00m44.502s</div>
+									<div><strong>Dec:</strong> -41d55m31.319s</div>
+									<div><strong>Pixel size:</strong> 3 mas</div>
+									<div><strong>Image size:</strong> 2000 px</div>
+								</div>
+								<p><strong>ALMA programs:</strong></p>
+								<ul class="template-programs">
+									<li>2016.1.00484.L</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+
+					<article class="template-card" id="lkha330">
+						<div class="template-card-header">
+							<span class="image simio-frame template-image">
+								<img class="simio-image" src="/images/simio-images/simio-im.png" alt="Temporary SIMIO logo for LkHa 330" />
+							</span>
+							<div class="template-info">
+								<h3><a href="https://keeper.mpdl.mpg.de/f/757b422f621c444c825d/" target="_blank" rel="noopener">LkHa330</a> <span class="template-note">(176.4 MB)</span></h3>
+								<p>Reference: <a href="https://ui.adsabs.harvard.edu/abs/2022arXiv220609975P/abstract" target="_blank" rel="noopener">Pinilla et al. 2022</a></p>
+								<div class="template-meta">
+									<div><strong>Distance:</strong> 318 pc</div>
+									<div><strong>Inclination:</strong> 27.5 deg</div>
+									<div><strong>PA:</strong> 49.2 deg</div>
+									<div><strong>Angular resolution:</strong> 55 x 30 mas, robust 1.0</div>
+									<div><strong>RA:</strong> 03h45m48.289s</div>
+									<div><strong>Dec:</strong> 32d24m11.728s</div>
+									<div><strong>Pixel size:</strong> 3 mas</div>
+									<div><strong>Image size:</strong> 2000 px</div>
+								</div>
+								<p><strong>ALMA programs:</strong></p>
+								<ul class="template-programs">
+									<li>2018.1.01302.S</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+
+					<article class="template-card" id="elias24">
+						<div class="template-card-header">
+							<span class="image simio-frame template-image">
+								<img class="simio-image" src="/images/simio-images/simio-im.png" alt="Temporary SIMIO logo for Elias 24" />
+							</span>
+							<div class="template-info">
+								<h3><a href="https://keeper.mpdl.mpg.de/f/cc533f1f7f344ba88275/" target="_blank" rel="noopener">Elias24</a> <span class="template-note">(179.2 MB)</span></h3>
+								<p>Reference: <a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...869L..42H/abstract" target="_blank" rel="noopener">Huang et al. 2018b</a></p>
+								<div class="template-meta">
+									<div><strong>Distance:</strong> 139 pc</div>
+									<div><strong>Inclination:</strong> 29 deg</div>
+									<div><strong>PA:</strong> 45.7 deg</div>
+									<div><strong>Angular resolution:</strong> 34 x 23 mas, robust 0.0</div>
+									<div><strong>RA:</strong> 16h26m24.0782s</div>
+									<div><strong>Dec:</strong> -24d16m13.872s</div>
+									<div><strong>Pixel size:</strong> 3 mas</div>
+									<div><strong>Image size:</strong> 2000 px</div>
+								</div>
+								<p><strong>ALMA programs:</strong></p>
+								<ul class="template-programs">
+									<li>2013.1.00498.S</li>
+									<li>2016.1.00484.L</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section id="band-7" class="tutorial-step">
+				<h2>Band 7</h2>
+				<p><strong>345 GHz, 0.87 mm</strong></p>
+
+				<div class="template-grid">
+					<article class="template-card" id="pds70">
+						<div class="template-card-header">
+							<span class="image simio-frame template-image">
+								<img class="simio-image" src="/images/simio-images/simio-im.png" alt="Temporary SIMIO logo for PDS 70" />
+							</span>
+							<div class="template-info">
+								<h3><a href="https://keeper.mpdl.mpg.de/f/c83a4f0b7ba249fdab72/" target="_blank" rel="noopener">PDS70</a> <span class="template-note">(321.7 MB)</span></h3>
+								<p>Reference: <a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...916L...2B/abstract" target="_blank" rel="noopener">Benisty et al. 2021</a></p>
+								<div class="template-meta">
+									<div><strong>Distance:</strong> 112 pc</div>
+									<div><strong>Inclination:</strong> 49.5 deg</div>
+									<div><strong>PA:</strong> 161 deg</div>
+									<div><strong>Angular resolution:</strong> 44 x 36 mas, robust 0.5</div>
+									<div><strong>RA:</strong> 14h08m10.108s</div>
+									<div><strong>Dec:</strong> -41d23m52.992s</div>
+									<div><strong>Pixel size:</strong> 5 mas</div>
+									<div><strong>Image size:</strong> 2000 px</div>
+								</div>
+								<p><strong>ALMA programs:</strong></p>
+								<ul class="template-programs">
+									<li>2015.1.00888.S</li>
+									<li>2017.A.00006.S</li>
+									<li>2018.A.00030.S</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section id="need-template" class="tutorial-step">
+				<h2>Do you need a template that is not here?</h2>
+				<p>Send me a message. If the self-calibrated dataset is publicly available, like DSHARP, then creating the template is fairly simple.</p>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://github.com/nicokurtovic" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Nicolas Kurtovic</li><li>Webpage design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/jquery.poptrox.min.js"></script>
+		<script src="/assets/js/browser.min.js"></script>
+		<script src="/assets/js/breakpoints.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<script src="/assets/js/main.js"></script>
+
+	</body>
+</html>
