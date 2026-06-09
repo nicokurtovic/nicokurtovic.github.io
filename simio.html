@@ -221,5 +221,33 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const slideshows = document.querySelectorAll(".simio-slideshow");
+
+				slideshows.forEach(function (slideshow) {
+					const slides = slideshow.querySelectorAll(".simio-slide");
+					let currentSlide = 0;
+
+					if (slides.length === 0) {
+						return;
+					}
+
+					// Make sure the first image is visible when the page loads.
+					slides.forEach(function (slide, index) {
+						slide.classList.toggle("active", index === 0);
+					});
+
+					if (slides.length > 1) {
+						setInterval(function () {
+							slides[currentSlide].classList.remove("active");
+							currentSlide = (currentSlide + 1) % slides.length;
+							slides[currentSlide].classList.add("active");
+						}, 4000);
+					}
+				});
+			});
+		</script>
+
 	</body>
 </html>
