@@ -6,82 +6,61 @@
 -->
 <html>
 	<head>
-		<title>SIMIO - Nicolas Kurtovic</title>
+		<title>SIMIO Quick Tutorial - Nicolas Kurtovic</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="google-site-verification" content="A6fCeSCpNlKdQ0DDIIZnKjODEDViKMowkcWayy-tpV0" />
-		<meta name="description" content="SIMIO: Connecting simulations to ALMA observations. A package by Nicolas Kurtovic for generating synthetic ALMA observations from radiative transfer images." />
+		<meta name="description" content="Quick tutorial for SIMIO: generating synthetic ALMA observations from radiative transfer images." />
 		<meta name="keywords" content="SIMIO, ALMA, CASA, synthetic observations, protoplanetary disks, radiative transfer, RADMC3D, astronomy, Nicolas Kurtovic" />
 		<meta name="author" content="Nicolas Kurtovic" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
 
 		<style>
-			.simio-logo {
-			    max-width: 10rem;
-			    margin: 0 0 1.5rem 2rem;
-			}
-			.simio-logo:before {
-			    display: none !important;
-			}
-			.simio-logo img {
-			    border-radius: 0 !important;
-			    background: white;
-			}
-			.simio-hero {
-				margin-bottom: 1.5rem;
-			}
-			.simio-frame:before {
-			    display: none !important;
-			}
-			.simio-frame img {
-			    background: white;
-			    border-radius: 0 !important;
-			}
-			.simio-image {
-			    box-shadow: none !important;
-			    border-radius: 0 !important;
-			    background: white;
-			}
-			.caption {
-				font-size: 0.9em;
-				line-height: 1.6;
-				color: #888;
-				margin-top: 0.75rem;
-			}
-			.simio-slideshow {
-				position: relative;
-				overflow: hidden;
+			.simio-submenu {
 				display: block;
+				margin-top: 0.35rem;
+				margin-left: 1.0rem;
+				font-size: 0.85em;
+				line-height: 1.7;
 			}
-
-			/* Use a specific selector because assets/css/main.css also styles .image.fit img. */
-			.simio-slideshow img.simio-slide {
-				display: none !important;
+			.simio-submenu a {
+				color: rgba(255, 255, 255, 0.65);
+				border-bottom: none;
+			}
+			.simio-submenu a:hover,
+			.simio-submenu a.active {
+				color: #49bf9d;
+			}
+			.tutorial-step {
+				margin-bottom: 2.75rem;
+			}
+			.tutorial-step h2 {
+				margin-bottom: 1.0rem;
+			}
+			.image-placeholder {
 				width: 100%;
-			}
-
-			.simio-slideshow img.simio-slide.active {
-				display: block !important;
-			}
-			.link-cards {
-				margin-top: 1.5rem;
-			}
-			.link-card {
+				min-height: 18rem;
 				border: solid 1px #efefef;
 				border-radius: 0.35em;
-				padding: 1.25rem;
-				height: 100%;
+				background: #ffffff;
+				margin: 1.5rem 0 0.5rem 0;
 			}
-			.link-card h3 {
-				margin-bottom: 0.4rem;
+			pre {
+				background: #f7f7f7;
+				border: solid 1px #efefef;
+				border-radius: 0.35em;
+				font-size: 0.85em;
+				line-height: 1.55;
+				margin: 1.25rem 0;
+				overflow-x: auto;
+				padding: 1.0rem 1.25rem;
 			}
-			@media screen and (max-width: 736px) {
-				.simio-logo {
-					display: block;
-					float: none !important;
-					margin: 0 auto 1.5rem auto;
-					max-width: 8rem;
-				}
+			pre code {
+				font-family: "Courier New", monospace;
+				white-space: pre;
+			}
+			code {
+				font-family: "Courier New", monospace;
 			}
 		</style>
 	</head>
@@ -90,7 +69,7 @@
 		<!-- Header -->
 		<header id="header">
 			<div class="inner">
-				<a href="/index.html" class="image avatar"><img src="images/profile_pic_grey_ntk.png" alt="" /></a>
+				<a href="/index.html" class="image avatar"><img src="/images/profile_pic_grey_ntk.png" alt="" /></a>
 				<h2><strong>Nicolas Kurtovic</strong></h2>
 				<h1>Astronomer, Postdoctoral Researcher.</h1>
 
@@ -100,7 +79,13 @@
 						<a href="/ntk_CV.pdf">CV</a><br />
 						<a href="/projects.html">My Publications</a><br />
 						<a href="/collaborations.html">Collaborations</a><br />
-						<a href="/simio.html">SIMIO</a></p>
+						<a href="/simio.html">SIMIO</a><br />
+
+						<span class="simio-submenu">
+							<a href="/additional-html/simio-quicktutorial.html" class="active">Quick tutorial</a><br />
+							<a href="/simio-templates.html">Templates</a><br />
+							<a href="/simio-create.html">Create a template</a>
+						</span></p>
 					</ul>
 				</nav>
 			</div>
@@ -109,94 +94,143 @@
 		<!-- Main -->
 		<div id="main">
 
-			<!-- SIMIO -->
-			<section id="simio">
-				<header class="major">
-					<h2>SIMIO</h2>
-				</header>
-
-				<span class="image right simio-logo">
-					<img src="images/simio-images/simio-im.png" alt="SIMIO logo" />
-				</span>
-
-				<h3>SIMIO: Connecting SIMulatIons to Observations</h3>
-				<p class="simio-hero">The SIMIO package contains a suite of functions and wrappers for CASA 5.6.2, designed to take your radiative transfer image, 
-									  for example from <a href="https://www.ita.uni-heidelberg.de/~dullemond/software/radmc-3d/" target="_blank" rel="noopener">RADMC-3D</a>, 
-									  and return how your system would have looked if ALMA had observed it. The package aims to answer the question: <em>How would my system 
-								      look if an existing observation had targeted it?</em></p>
-
-				<ul class="actions">
-					<li><a href="https://simio-continuum.readthedocs.io/" class="button primary" target="_blank" rel="noopener">Documentation</a></li>
-					<li><a href="https://github.com/nicokurtovic/SIMIO" class="button" target="_blank" rel="noopener">GitHub</a></li>
-				</ul>
-			</section>
-
-			<section id="what-it-does">
-				<h2>The package</h2>
-
-				<h3>Difference with simobserve and simanalyze</h3>
-				<p>The CASA tasks generate synthetic observations based on antenna configuration inputs, total exposure time, observation time, selected bandwidth, and other information needed to create the synthetic visibilities.</p>
-				<p>SIMIO, on the other hand, takes existing ALMA observations and replaces their data with your synthetic image. Therefore, you automatically have the same uv-coverage, frequency coverage, bandwidth, exposure time, and all the properties of the actual observation. This is useful when you need to test whether existing observations could have detected the features of your simulations.</p>
-				<p>With SIMIO, you do not need to worry about the observational details since the default parameters already mimic the chosen observation. All the imaging parameters and routines are set to state-of-the-art knowledge. Just input your simulation and get all the products.</p>
-
-				<h3>Compare directly to any ALMA observation</h3>
-				<p>SIMIO has several templates that you can use for your synthetic observation, and you can also add templates by yourself. Each template contains an actual observation of a protoplanetary disk and information about the source. By default, SIMIO will take your observation and simulate it as if it had the same geometry and distance as the template. Both the geometry and the distance to the source can be modified.</p>
-				<p>You can also disable the source geometry and input your radiative transfer image with the desired geometry.</p>
-
-				<h3>Better than Gaussian convolution, and as easy to run</h3>
-				<p>Gaussian convolution is just one of the steps of generating an image with CLEAN. The SIMIO package will give you all the necessary data products to analyze your simulations::</p>
+			<section id="step-1" class="tutorial-step">
+				<h2>Step 1: The package</h2>
+				<p>Open the SIMIO folder. You will see:</p>
 				<ul>
-					<li>Measurement Set, or ms file.</li>
-					<li>Images in FITS format: beam-convolved image, PSF, model, and residuals.</li>
-					<li>Additional data figures comparing your source to the template.</li>
+					<li><strong>codes:</strong> Where the functions and wrappers are located.</li>
+					<li><strong>plots:</strong> After creating your synthetic observation, you can use the functions within this folder to create further figures.</li>
+					<li><strong>projects:</strong> Your projects must be stored in this folder.</li>
+					<li><strong>templates:</strong> Your templates must be stored in this folder.</li>
+					<li><strong>casa_examples:</strong> Example codes to run SIMIO are stored in this folder.</li>
+					<li><strong>simio_casa.py:</strong> Example code to use SIMIO. Any SIMIO code should be run from this location: <code>~/path_to_simio/simio/</code>.</li>
 				</ul>
-			</section>
-
-			<section id="examples">
-				<h2>Example</h2>
-				<p>This is how the Solar System from <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...659A...6B/abstract" target="_blank" rel="noopener">Bergez-Casalou et al. (2022)</a> would look if it was at the same distance and geometry as HD 163296, TW Hya, MY Lup, or LkHa 330.</p>
-
-				<div class="image fit simio-frame simio-slideshow">
-					<img class="simio-image simio-slide active" src="images/simio-images/pds70.png" alt="SIMIO example: PDS 70" />
-					<img class="simio-image simio-slide" src="images/simio-images/twhya.png" alt="SIMIO example: TW Hya" />
-					<img class="simio-image simio-slide" src="images/simio-images/hd163296.png" alt="SIMIO example: HD 163296" />
-					<img class="simio-image simio-slide" src="images/simio-images/mylup.png" alt="SIMIO example: MY Lup" />
-					<img class="simio-image simio-slide" src="images/simio-images/lkha330.png" alt="SIMIO example: LkHa 330" />
-				</div>
-				<p class="caption">The Solar System from <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...659A...6B/abstract" target="_blank" rel="noopener">Bergez-Casalou et al. (2022)</a> if it was at the same distance and geometry of PDS 70, using the observations of <a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...916L...2B/abstract" target="_blank" rel="noopener">Benisty et al. (2021)</a>. The dots show the locations of PDS 70 b, PDS 70 c, and the disk center.</p>
-			</section>
-
-			<section id="resources">
-				<h2>Resources</h2>
-				<div class="row link-cards">
-					<article class="col-6 col-12-xsmall">
-						<div class="link-card">
-							<h3>Documentation</h3>
-							<p>Read the installation notes, tutorials, API descriptions, and examples.</p>
-							<ul class="actions">
-								<li><a href="https://simio-continuum.readthedocs.io/" class="button small" target="_blank" rel="noopener">Read the docs</a></li>
-							</ul>
-						</div>
-					</article>
-					<article class="col-6 col-12-xsmall">
-						<div class="link-card">
-							<h3>Code</h3>
-							<p>Download SIMIO, check the source code, or report issues through GitHub.</p>
-							<ul class="actions">
-								<li><a href="https://github.com/nicokurtovic/SIMIO" class="button small" target="_blank" rel="noopener">GitHub repository</a></li>
-							</ul>
-						</div>
-					</article>
+				<div class="image-placeholder">
+					<!-- Image placeholder: SIMIO folder structure. -->
 				</div>
 			</section>
 
-			<section id="acknowledgements">
-				<h2>Acknowledgements</h2>
-				<p>This work was possible thanks to the support of my Ph.D. advisor, <a href="https://paola-pinilla.com/" target="_blank" rel="noopener">Paola Pinilla</a>. The original routines to extract and replace visibilities in measurement sets were written by <a href="https://das.uchile.cl/integrantes/laura-perez/" target="_blank" rel="noopener">Laura Pérez</a> and later modified to fit into SIMIO. The JvM correction routine is original from the <a href="https://almascience.eso.org/alma-data/lp/MAPS" target="_blank" rel="noopener">MAPS</a> collaboration. I also thank the ALMA helpdesk staff, especially Jackie Bertone, who helped fix the measurement set of TW Hya to create its template.</p>
-				<p>I acknowledge the support provided by the Alexander von Humboldt Foundation in the framework of the Sofja Kovalevskaja Award endowed by the Federal Ministry of Education and Research.</p>
+			<section id="step-2" class="tutorial-step">
+				<h2>Step 2: Include your template</h2>
+				<p>Go into the <code>templates/</code> folder. Add to your SIMIO the template that will generate your synthetic observation. SIMIO has HD163296 from DSHARP as the default template, and you can download others from this page.</p>
+				<div class="image-placeholder">
+					<!-- Image placeholder: templates folder. -->
+				</div>
+			</section>
 
-				<h3>Are you having issues creating a template?</h3>
-				<p>Send me a message. Some measurement sets can be a bit challenging, but we will sort it out.</p>
+			<section id="step-3" class="tutorial-step">
+				<h2>Step 3: Create your project</h2>
+				<p>Create a folder with the name of your project in the folder <code>projects/</code>. You can use any name you want. In this example, our project will be named <code>SolarS_HD163296</code> since we want to generate an observation of how the Solar System would look if DSHARP had observed it at the distance and geometry of HD163296.</p>
+				<div class="image-placeholder">
+					<!-- Image placeholder: project folder. -->
+				</div>
+			</section>
+
+			<section id="step-4" class="tutorial-step">
+				<h2>Step 4: Prepare your project</h2>
+				<p>Go inside your project folder. In this example, we are inside the folder <code>SolarS_HD163296/</code>. Create the folders <code>images</code>, <code>msfiles</code>, and <code>uvtables</code>, and leave them empty. Add your radiative transfer image from RADMC-3D in <code>.out</code> or <code>.npy</code> format. In this example, our radiative transfer image is <code>image_1300micron.out</code>.</p>
+				<p>SIMIO will use the folders you just created to store:</p>
+				<ul>
+					<li><strong>images:</strong> The FITS files generated with SIMIO will be stored in that folder. Check it after running the code.</li>
+					<li><strong>msfiles:</strong> Your synthetic observation will have its own measurement file, where the visibilities are stored. You will be able to find that file in this folder.</li>
+					<li><strong>uvtables:</strong> The visibilities will also be given in <code>.txt</code> format, which you can further use to analyze with other tools, such as <a href="https://github.com/discsim/frank" target="_blank" rel="noopener">frank</a> or <a href="https://github.com/mtazzari/galario" target="_blank" rel="noopener">galario</a>. The visibility table will be written inside this folder.</li>
+				</ul>
+				<div class="image-placeholder">
+					<!-- Image placeholder: prepared project folder. -->
+				</div>
+			</section>
+
+			<section id="step-5" class="tutorial-step">
+				<h2>Step 5: Run SIMIO</h2>
+				<p>Go back to the initial SIMIO folder. Open <code>simio_casa.py</code> and open CASA 5.6.2 in a terminal.</p>
+
+<pre><code># Import needed python packages
+import sys
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Get the current directory path
+current_dir = os.getcwd()+'/'</code></pre>
+
+				<p>The first part of the code imports the necessary python packages, and sets the path to the SIMIO folder.</p>
+
+<pre><code># Import the analysis utils functions
+sys.path.append(current_dir+'codes/analysis_scripts/')
+import analysisUtils as au
+
+# Import the simio object
+execfile(current_dir+'codes/simio_obj.py')
+
+# Import functions for uv-handling
+execfile(current_dir+'codes/simio_ms2ascii.py')
+
+# Import functions for imaging
+execfile(current_dir+'codes/simio_clean.py')</code></pre>
+
+				<p>The second part is needed to load the SIMIO functions. Each subcode needs functions from the previous one, so it is necessary to execute them in the correct order.</p>
+				<p>You should not need to change anything in the import and execute-functions blocks.</p>
+
+<pre><code>###########################
+# Solar System as HD163296
+###########################
+
+# Create a simio object.
+simobj = simio_object(object_name = 'SolarS_HD163296',
+                      im_file_name = 'image_1300micron.out',
+                      template = 'HD163296',
+                      use_tempgeom = True)</code></pre>
+
+				<p>Create your <code>simio_object</code>, which is the basic object of the SIMIO package. This object will contain all the needed information to generate your synthetic observation.</p>
+				<ul>
+					<li><strong>object_name:</strong> Write the name of your project, which you created in steps 3 and 4.</li>
+					<li><strong>im_file_name:</strong> Name of your radiative transfer image, including the format.</li>
+					<li><strong>template:</strong> Name of the template you want to mimic. In this example, HD163296.</li>
+					<li><strong>use_tempgeom:</strong> Set to <code>True</code> if you want SIMIO to incline and rotate your image with the inclination and position angle of the template, under the assumption that your input is face-on. If your image already has the geometry you desire, and you do not want SIMIO to apply any geometric change, then set it to <code>False</code>.</li>
+				</ul>
+
+<pre><code># Create the measurement file of your simio object
+# Can take several minutes
+mod_ms = get_mod_ms(simobj)</code></pre>
+
+				<p>The function <code>get_mod_ms</code> will take your image and generate the measurement set, replacing the observation of the template. You will receive the path to the measurement set in the variable <code>mod_ms</code> as an output of the code.</p>
+
+<pre><code># Create masks
+mask_obj = simobj.get_mask(mask_semimajor=0.65)
+mask_res = simobj.get_residual_mask()</code></pre>
+
+				<p>Create the masks to CLEAN the synthetic observation, and generate the images. These masks will be loaded into <code>simobj</code> and returned as strings.</p>
+				<ul>
+					<li><strong>mask_obj:</strong> An elliptical mask with the geometry of the template. You can set the semi-major axis of the ellipse in units of arcsec.</li>
+					<li><strong>mask_res:</strong> Generates an annulus mask that will be used to calculate the background properties of your image.</li>
+				</ul>
+
+<pre><code># Generate image for your simio object.
+# Can take several minutes, maybe an hour.
+easy_mod_tclean(simobj, interactive=True)</code></pre>
+
+				<p>Your synthetic observation has already been generated, but now we need to generate the images. The function <code>easy_mod_tclean</code> is a wrapper of the function <code>tclean</code> and <code>simobj</code>, which runs the CLEAN algorithm over your new observations.</p>
+				<p>Set <code>interactive</code> to <code>True</code> to see if the mask includes all the emission. Press the green arrow to start a cycle of the cleaning process, or alternatively, press the blue arrow and wait until it is done.</p>
+				<p>Depending on your computer and template, this step can take from a few minutes to an hour. Be patient.</p>
+				<div class="image-placeholder">
+					<!-- Image placeholder: CASA/tclean running. -->
+				</div>
+			</section>
+
+			<section id="step-6" class="tutorial-step">
+				<h2>Step 6: Check the results</h2>
+				<p>Go back to the project folder. After executing <code>get_mod_ms</code>, you will find the measurement set and the visibilities table in their folders. After running <code>easy_mod_tclean</code>, you will get the products in the <code>images</code> folder.</p>
+				<div class="image-placeholder">
+					<!-- Image placeholder: final project products. -->
+				</div>
+				<p>The images will be named by your project name, plus a suffix. Each image is:</p>
+				<ul>
+					<li><strong>project_im.fits:</strong> Beam-convolved image, with the JvM correction (<a href="https://ui.adsabs.harvard.edu/abs/2021ApJS..257....2C/abstract" target="_blank" rel="noopener">Czekala et al. 2021</a>). This is how your source would look if ALMA had observed it with the same setup as the template.</li>
+					<li><strong>project_im_model.fits:</strong> The model image generated by the CLEAN algorithm, as a description of the visibilities of your source.</li>
+					<li><strong>project_im_noJvM.fits:</strong> Beam-convolved image without the JvM correction.</li>
+					<li><strong>project_im_psf.fits:</strong> The PSF of the observation.</li>
+					<li><strong>project_im_residual.fits:</strong> The residuals of the CLEAN algorithm. These residuals will be very structured, as the generated measurement set does not contain noise. However, they should be very small in total flux.</li>
+				</ul>
 			</section>
 
 		</div>
@@ -214,40 +248,12 @@
 		</footer>
 
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.poptrox.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const slideshows = document.querySelectorAll(".simio-slideshow");
-
-				slideshows.forEach(function (slideshow) {
-					const slides = slideshow.querySelectorAll(".simio-slide");
-					let currentSlide = 0;
-
-					if (slides.length === 0) {
-						return;
-					}
-
-					// Make sure the first image is visible when the page loads.
-					slides.forEach(function (slide, index) {
-						slide.classList.toggle("active", index === 0);
-					});
-
-					if (slides.length > 1) {
-						setInterval(function () {
-							slides[currentSlide].classList.remove("active");
-							currentSlide = (currentSlide + 1) % slides.length;
-							slides[currentSlide].classList.add("active");
-						}, 4000);
-					}
-				});
-			});
-		</script>
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/jquery.poptrox.min.js"></script>
+		<script src="/assets/js/browser.min.js"></script>
+		<script src="/assets/js/breakpoints.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<script src="/assets/js/main.js"></script>
 
 	</body>
 </html>
