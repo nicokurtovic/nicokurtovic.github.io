@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SIMIO Updates - Nicolas Kurtovic</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="google-site-verification" content="A6fCeSCpNlKdQ0DDIIZnKjODEDViKMowkcWayy-tpV0" />
+		<meta name="description" content="Updates log for SIMIO: version history and new features for synthetic ALMA observations." />
+		<meta name="keywords" content="SIMIO, ALMA, CASA, updates, synthetic observations, protoplanetary disks, Nicolas Kurtovic" />
+		<meta name="author" content="Nicolas Kurtovic" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+
+		<style>
+			.simio-submenu {
+				display: block;
+				margin-top: 0.35rem;
+				margin-left: 1.0rem;
+				font-size: 0.85em;
+				line-height: 1.7;
+			}
+			.simio-submenu a {
+				color: rgba(255, 255, 255, 0.65);
+				border-bottom: none;
+			}
+			.simio-submenu a:hover,
+			.simio-submenu a.active {
+				color: #49bf9d;
+			}
+			.tutorial-step {
+				margin-bottom: 2.75rem;
+			}
+			.tutorial-step h2 {
+				margin-bottom: 1.0rem;
+			}
+			.simio-frame {
+				display: inline-block !important;
+				width: auto !important;
+				max-width: 100% !important;
+				background: transparent !important;
+				margin: 1.5rem 0 0.5rem 0;
+			}
+			.simio-frame:before {
+				display: none !important;
+			}
+			.simio-frame img {
+				display: block;
+				width: auto !important;
+				max-width: 100% !important;
+				height: auto !important;
+				background: white;
+				border-radius: 0 !important;
+			}
+			.simio-image {
+				box-shadow: none !important;
+				border-radius: 0 !important;
+				background: white;
+			}
+			.update-grid {
+				display: flex;
+				flex-direction: column;
+				gap: 1.75rem;
+				margin-top: 1.5rem;
+			}
+			.update-card {
+				border-top: solid 1px #efefef;
+				padding-top: 1.5rem;
+			}
+			.update-card:first-child {
+				border-top: 0;
+				padding-top: 0;
+			}
+			.update-card-header {
+				display: flex;
+				gap: 1.4rem;
+				align-items: flex-start;
+			}
+			.update-image {
+				flex: 0 0 auto;
+				margin: 0.2rem 0 0.5rem 0;
+			}
+			.update-image img {
+				max-width: 13rem !important;
+			}
+			.update-info {
+				flex: 1 1 auto;
+				min-width: 0;
+			}
+			.update-info h3 {
+				margin-bottom: 0.25rem;
+			}
+			.update-date {
+				font-size: 0.95em;
+				color: #888;
+				margin-bottom: 0.75rem;
+			}
+			.update-info ul {
+				margin-top: 0.5rem;
+			}
+			.update-info li {
+				margin: 0.25rem 0;
+			}
+			@media screen and (max-width: 736px) {
+				.update-card-header {
+					display: block;
+				}
+				.update-image img {
+					max-width: 11rem !important;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a href="/index.html" class="image avatar"><img src="/images/profile_pic_grey_ntk.png" alt="" /></a>
+				<h2><strong>Nicolas Kurtovic</strong></h2>
+				<h1>Astronomer, Postdoctoral Researcher.</h1>
+
+				<nav id="nav">
+					<ul>
+						<p><a href="/index.html">Home</a><br />
+						<a href="/ntk_CV.pdf">CV</a><br />
+						<a href="/projects.html">My Publications</a><br />
+						<a href="/collaborations.html">Collaborations</a><br />
+						<a href="/simio.html">SIMIO</a><br />
+
+						<span class="simio-submenu">
+							<a href="/additional-html/simio-quicktutorial.html">Quick tutorial</a><br />
+							<a href="/additional-html/simio-template-info.html">Templates</a><br />
+							<a href="/additional-html/simio-create.html">Create a template</a><br />
+							<a href="/additional-html/simio-updates.html" class="active">Updates</a>
+						</span></p>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<section id="updates-log" class="tutorial-step">
+				<h2>Updates log</h2>
+				<p>This page summarizes the public SIMIO version history and the main changes introduced in each release.</p>
+			</section>
+
+			<section id="versions" class="tutorial-step">
+				<div class="update-grid">
+
+					<article class="update-card" id="version-1-2">
+						<div class="update-card-header">
+							<span class="image simio-frame update-image">
+								<img class="simio-image" src="/images/simio-images/simio_update1.2.png" alt="SIMIO update version 1.2" />
+							</span>
+							<div class="update-info">
+								<h3>SIMIO v1.2</h3>
+								<p class="update-date">November 21, 2023</p>
+								<p>SIMIO receives its second major update after public release:</p>
+								<ul>
+									<li>Many small internal changes were implemented following comments from the JOSS reviewers. These updates do not change how SIMIO is executed from the terminal.</li>
+									<li>SIMIO now works in CASA version 6.X, although CASA 5.4.X and 5.6.X are still the recommended versions.</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+
+					<article class="update-card" id="version-1-1">
+						<div class="update-card-header">
+							<span class="image simio-frame update-image">
+								<img class="simio-image" src="/images/simio-images/simio_update1.1.png" alt="SIMIO update version 1.1" />
+							</span>
+							<div class="update-info">
+								<h3>SIMIO v1.1</h3>
+								<p class="update-date">August 7, 2022</p>
+								<p>SIMIO receives its first major update after public release:</p>
+								<ul>
+									<li>The function <code>add_noise</code> works as a wrapper for CASA <code>sm.setnoise</code> in simple-noise mode, so simple thermal noise can be added to synthetic SIMIO observations.</li>
+									<li>The function <code>easy_mod_tclean</code> was modified internally, with <code>gain=0.06</code>, <code>scales=[0, 4, 8, 24]</code>, and <code>smallscalebias=0.5</code>. This should improve imaging time and help obtain smoother images with the TWHya template.</li>
+									<li>Tutorials were included to show how to include noise, change the source distance, and modify single geometric parameters.</li>
+									<li>The full <a href="https://simio-continuum.readthedocs.io/" target="_blank" rel="noopener">documentation</a> was included in GitHub and Read the Docs.</li>
+									<li>Descriptions of all the functions were updated.</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+
+					<article class="update-card" id="version-1-0">
+						<div class="update-card-header">
+							<span class="image simio-frame update-image">
+								<img class="simio-image" src="/images/simio-images/simio_update1.0.png" alt="SIMIO update version 1.0" />
+							</span>
+							<div class="update-info">
+								<h3>SIMIO v1.0</h3>
+								<p class="update-date">March 9, 2022</p>
+								<p>SIMIO is in its first publicly available version:</p>
+								<ul>
+									<li>The Fourier Transform routine was updated to work with the CASA task <code>ft</code>. The calculation of the visibilities with python <code>galario</code> is still available through the old <code>get_mod_ms</code> function, but <code>get_mod_ms_ft</code> should be preferred.</li>
+									<li>The model in <code>.out</code> file is now also returned in <code>.fits</code> format, with the coordinate information of the template and the flux scaled to the specified distance.</li>
+									<li>Image rotation and inclination options were added to the visibility calculator that works with the CASA <code>ft</code> task.</li>
+									<li>Distance can now be set as an independent parameter. The default target distance is the template distance, but this can be modified when creating a <code>simio_object</code>.</li>
+									<li>The flux can be modified to meet a desired value. To make the final image have a certain flux after distance correction, input this flux with the <code>rescale_flux</code> argument of <code>simio_object</code>.</li>
+								</ul>
+								<p class="update-date">March 11, 2022</p>
+								<ul>
+									<li>Template Elias24 was added to the ALMA Band 6 section.</li>
+									<li>The tutorial to create a template was added to the webpage, with Elias24 as the example.</li>
+									<li>The webpage was updated with detailed template information.</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+
+					<article class="update-card" id="version-0-5">
+						<div class="update-card-header">
+							<span class="image simio-frame update-image">
+								<img class="simio-image" src="/images/simio-images/simio_update0.5.png" alt="SIMIO update version 0.5" />
+							</span>
+							<div class="update-info">
+								<h3>SIMIO v0.5</h3>
+								<p class="update-date">November 11, 2021</p>
+								<p>SIMIO is in its first working version:</p>
+								<ul>
+									<li>Only available through private request.</li>
+									<li>Available templates are HD163296, LkHa330, MYLup, and TWHya in ALMA Band 6, at 230 GHz. For ALMA Band 7, at 345 GHz, PDS70 is available.</li>
+									<li>The Fourier Transform routine is based on python <a href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.476.4527T/abstract" target="_blank" rel="noopener">galario</a>, which is optimized for speed.</li>
+								</ul>
+							</div>
+						</div>
+					</article>
+
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://github.com/nicokurtovic" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Nicolas Kurtovic</li><li>Webpage design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/jquery.poptrox.min.js"></script>
+		<script src="/assets/js/browser.min.js"></script>
+		<script src="/assets/js/breakpoints.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<script src="/assets/js/main.js"></script>
+
+	</body>
+</html>
